@@ -4,27 +4,66 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1de25cff-0569-4b2f-a644-15fe7373cde7" name="Changes" comment="" />
+    <list default="true" id="1de25cff-0569-4b2f-a644-15fe7373cde7" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/05_ParametersAndExceptionHandler/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/05_ParametersAndExceptionHandler/.idea/04_FirstStepsInJavawithSpringBoot.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/05_ParametersAndExceptionHandler/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/05_ParametersAndExceptionHandler/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/05_ParametersAndExceptionHandler/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/05_ParametersAndExceptionHandler/rest-with-spring-boot-and-java-erudio/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/05_ParametersAndExceptionHandler/rest-with-spring-boot-and-java-erudio/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/05_ParametersAndExceptionHandler/rest-with-spring-boot-and-java-erudio/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/05_ParametersAndExceptionHandler/rest-with-spring-boot-and-java-erudio/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/05_ParametersAndExceptionHandler/rest-with-spring-boot-and-java-erudio/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/05_ParametersAndExceptionHandler/rest-with-spring-boot-and-java-erudio/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/05_ParametersAndExceptionHandler/rest-with-spring-boot-and-java-erudio/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/05_ParametersAndExceptionHandler/rest-with-spring-boot-and-java-erudio/src/main/java/br/com/erudio/Startup.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/05_ParametersAndExceptionHandler/rest-with-spring-boot-and-java-erudio/src/main/java/br/com/erudio/controllers/PersonController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/05_ParametersAndExceptionHandler/rest-with-spring-boot-and-java-erudio/src/main/java/br/com/erudio/exception/ExceptionResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/05_ParametersAndExceptionHandler/rest-with-spring-boot-and-java-erudio/src/main/java/br/com/erudio/exception/UnsupportedMathOperationException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/05_ParametersAndExceptionHandler/rest-with-spring-boot-and-java-erudio/src/main/java/br/com/erudio/exception/handler/CustomEntityResponseHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/05_ParametersAndExceptionHandler/rest-with-spring-boot-and-java-erudio/src/main/java/br/com/erudio/model/Person.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/05_ParametersAndExceptionHandler/rest-with-spring-boot-and-java-erudio/src/main/java/br/com/erudio/request/converters/NumberConverter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/05_ParametersAndExceptionHandler/rest-with-spring-boot-and-java-erudio/src/main/java/br/com/erudio/request/converters/PersonServices.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/05_ParametersAndExceptionHandler/rest-with-spring-boot-and-java-erudio/src/main/resources/application.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/05_ParametersAndExceptionHandler/rest-with-spring-boot-and-java-erudio/src/test/java/br/com/erudio/StartupTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/05_ParametersAndExceptionHandler/rest-with-spring-boot-and-java-erudio/src/test/resources/application.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/05_ParametersAndExceptionHandler/rest-with-spring-boot-and-java-erudio/target/classes/application.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/05_ParametersAndExceptionHandler/rest-with-spring-boot-and-java-erudio/target/classes/br/com/erudio/Startup.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/05_ParametersAndExceptionHandler/rest-with-spring-boot-and-java-erudio/target/classes/br/com/erudio/controllers/PersonController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/05_ParametersAndExceptionHandler/rest-with-spring-boot-and-java-erudio/target/classes/br/com/erudio/exception/ExceptionResponse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/05_ParametersAndExceptionHandler/rest-with-spring-boot-and-java-erudio/target/classes/br/com/erudio/exception/UnsupportedMathOperationException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/05_ParametersAndExceptionHandler/rest-with-spring-boot-and-java-erudio/target/classes/br/com/erudio/exception/handler/CustomEntityResponseHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/05_ParametersAndExceptionHandler/rest-with-spring-boot-and-java-erudio/target/classes/br/com/erudio/model/Person.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/05_ParametersAndExceptionHandler/rest-with-spring-boot-and-java-erudio/target/classes/br/com/erudio/request/converters/NumberConverter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/05_ParametersAndExceptionHandler/rest-with-spring-boot-and-java-erudio/target/classes/br/com/erudio/request/converters/PersonServices.class" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 8
-}]]></component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectId" id="36fkEDVLqfKMPTjBEZRk71UIYbD" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/Guilherme/Desktop/Udemy/rest-with-spring-boot-and-java-erudio"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Guilherme/Desktop/Udemy/rest-with-spring-boot-and-java-erudio&quot;
   }
-}]]></component>
+}</component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="1de25cff-0569-4b2f-a644-15fe7373cde7" name="Changes" comment="" />

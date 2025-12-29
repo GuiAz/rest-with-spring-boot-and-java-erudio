@@ -1,13 +1,13 @@
 package br.com.erudio.request.converters;
 
-import br.com.erudio.exception.UnsupportedMathOperationException;
+import br.com.erudio.exception.ResourceNotFoundException;
 
 public class NumberConverter {
 
     public static Double convertToDouble(String strNumber) throws IllegalArgumentException {
 
         if (strNumber == null || strNumber.isEmpty())
-            throw new UnsupportedMathOperationException("Please set a numeric value");
+            throw new ResourceNotFoundException("Please set a numeric value");
         String number = strNumber.replace(",", ".");
         return Double.parseDouble(number);
     }
