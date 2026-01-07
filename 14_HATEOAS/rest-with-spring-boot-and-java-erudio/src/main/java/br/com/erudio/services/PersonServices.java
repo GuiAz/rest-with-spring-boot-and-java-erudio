@@ -46,11 +46,12 @@ public class PersonServices {
         var entity = repository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("No records found for this ID!"));
         var dto = parseObjects(entity, PersonDTO.class);
-        dto.add(linkTo(methodOn(PersonController.class).findById(id)).withSelfRel().withType("GET"));
+        addHateoasLinks(id, dto);
         return dto;
     }
 
     //Criação de uma pessoa - POST
+
     public PersonDTO create(PersonDTO person) {
         logger.info("Creating one Person!");
         var entity = parseObjects(person, Person.class);
@@ -59,8 +60,8 @@ public class PersonServices {
         //Isolamento de entidades, precisamos converter uma DTO
         return parseObjects(repository.save(entity), PersonDTO.class);
     }
-
     //Atualização de cadastro de uma pessoa - PUT
+
     public PersonDTO update(PersonDTO person) {
         logger.info("Updating one Person!");
 
@@ -75,8 +76,8 @@ public class PersonServices {
         //Atualizando a pessoa no repositorio.
         return parseObjects(repository.save(entity), PersonDTO.class);
     }
-
     //Delete por Id - Criada uma pessoa mockada. - DELETE By ID
+
     public void delete(Long id) {
         logger.info("Deleting one Person!");
 
@@ -85,5 +86,13 @@ public class PersonServices {
 
         //deleta a pessoa do bando de dado após a busca. Caso encontre, dela, senão, joga o erro.
         repository.delete(entity);
+    }
+
+    private static void addHateoasLinks(Long id, PersonDTO dto) {
+        dto.add(linkTo(methodOn(PersonController.class).findById(id)).withSelfRel().withType("GET"));
+        dto.add(linkTo(methodOn(PersonController.class).findAll()).withRel("findAll").withType("GET"));
+        dto.add(linkTo(methodOn(PersonController.class).create(dto)).withRel("create").withType("POST"));
+        dto.add(linkTo(methodOn(PersonController.class).update(dto)).withRel("update").withType("UPDATE"));
+        dto.add(linkTo(methodOn(PersonController.class).delete(id)).withRel("delete").withType("DELETE"));
     }
 }
