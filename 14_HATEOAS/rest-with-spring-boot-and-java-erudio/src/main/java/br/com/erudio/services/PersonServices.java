@@ -28,44 +28,38 @@ public class PersonServices {
     @Autowired
     PersonRepository repository;
 
-    //Buscar Todos - Mock com for e lista para criar as pessoas buscadas no banco - GET
     public List<PersonDTO> findAll() {
         logger.info("Finding all Person!");
 
-        //Isolamento de entidades, precisamos converter uma DTO
-//        return repository.findAll();
-        return parseListObjects(repository.findAll(), PersonDTO.class);
+        var persons = parseListObjects(repository.findAll(), PersonDTO.class);
+        persons.forEach(this::addHateoasLinks);
+        return persons;
     }
 
-    //Busca por Id - Criada uma pessoa mockada. - GET By ID
     public PersonDTO findById(Long id) {
         logger.info("Finding one Person!");
 
-        //Busca a pessoa encontrada utilizando a JPA - Caso não encontre, retorna uma mensagem de erro
-        //Isolamento de entidades, precisamos converter uma DTO
         var entity = repository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("No records found for this ID!"));
+
         var dto = parseObjects(entity, PersonDTO.class);
-        addHateoasLinks(id, dto);
+        addHateoasLinks(dto);
+
         return dto;
     }
-
-    //Criação de uma pessoa - POST
 
     public PersonDTO create(PersonDTO person) {
         logger.info("Creating one Person!");
         var entity = parseObjects(person, Person.class);
 
-        //Criando uma pessoa no repositorio utilizando JPA
-        //Isolamento de entidades, precisamos converter uma DTO
-        return parseObjects(repository.save(entity), PersonDTO.class);
+        var dto = parseObjects(repository.save(entity), PersonDTO.class);
+        addHateoasLinks(dto);
+        return dto;
     }
-    //Atualização de cadastro de uma pessoa - PUT
 
     public PersonDTO update(PersonDTO person) {
         logger.info("Updating one Person!");
 
-        //Busca a pessoa no bando de dados, baseado no id dela. Caso encontre, atualiza, senão, joga o erro.
         Person entity = repository.findById(person.getId())
                 .orElseThrow(() -> new ResourceNotFoundException("No records found for this ID!"));
         entity.setFirstName(person.getFirstName());
@@ -73,10 +67,11 @@ public class PersonServices {
         entity.setAddress(person.getAddress());
         entity.setGender(person.getGender());
 
-        //Atualizando a pessoa no repositorio.
-        return parseObjects(repository.save(entity), PersonDTO.class);
+
+        var dto = parseObjects(repository.save(entity), PersonDTO.class);
+        addHateoasLinks(dto);
+        return dto;
     }
-    //Delete por Id - Criada uma pessoa mockada. - DELETE By ID
 
     public void delete(Long id) {
         logger.info("Deleting one Person!");
@@ -84,15 +79,14 @@ public class PersonServices {
         Person entity = repository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("No records found for this ID!"));
 
-        //deleta a pessoa do bando de dado após a busca. Caso encontre, dela, senão, joga o erro.
         repository.delete(entity);
     }
 
-    private static void addHateoasLinks(Long id, PersonDTO dto) {
-        dto.add(linkTo(methodOn(PersonController.class).findById(id)).withSelfRel().withType("GET"));
+    private void addHateoasLinks(PersonDTO dto) {
+        dto.add(linkTo(methodOn(PersonController.class).findById(dto.getId())).withSelfRel().withType("GET"));
         dto.add(linkTo(methodOn(PersonController.class).findAll()).withRel("findAll").withType("GET"));
         dto.add(linkTo(methodOn(PersonController.class).create(dto)).withRel("create").withType("POST"));
         dto.add(linkTo(methodOn(PersonController.class).update(dto)).withRel("update").withType("UPDATE"));
-        dto.add(linkTo(methodOn(PersonController.class).delete(id)).withRel("delete").withType("DELETE"));
+        dto.add(linkTo(methodOn(PersonController.class).delete(dto.getId())).withRel("delete").withType("DELETE"));
     }
 }
