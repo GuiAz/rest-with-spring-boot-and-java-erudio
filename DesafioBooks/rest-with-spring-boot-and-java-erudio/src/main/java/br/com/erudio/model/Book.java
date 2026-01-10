@@ -1,5 +1,6 @@
 package br.com.erudio.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -17,6 +18,7 @@ public class Book {
     private String author;
 
     @Column(name = "launch_date", nullable = false)
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private Date launchDate;
 
     @Column(nullable = false)

@@ -4,9 +4,7 @@ import br.com.erudio.model.Book;
 import br.com.erudio.services.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,10 +18,46 @@ public class BookController {
     @GetMapping(produces = {
             MediaType.APPLICATION_JSON_VALUE,
             MediaType.APPLICATION_XML_VALUE,
-            MediaType.APPLICATION_YAML_VALUE}
-    )
+            MediaType.APPLICATION_YAML_VALUE
+    })
     public List<Book> findAll() {
         return bookService.findAllBooks();
     }
+
+
+    @GetMapping(value = "/{id}",
+            produces = {
+                    MediaType.APPLICATION_JSON_VALUE,
+                    MediaType.APPLICATION_YAML_VALUE,
+                    MediaType.APPLICATION_XML_VALUE
+            })
+    public Book findById(@PathVariable("id") Long id) {
+        return bookService.findBookById(id);
+    }
+
+    @PostMapping(
+            consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_YAML_VALUE, MediaType.APPLICATION_XML_VALUE},
+            produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_YAML_VALUE, MediaType.APPLICATION_XML_VALUE}
+    )
+    public Book create(@RequestBody Book book) {
+        return bookService.createBook(book);
+    }
+
+    @PutMapping(
+            consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_YAML_VALUE, MediaType.APPLICATION_XML_VALUE},
+            produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_YAML_VALUE, MediaType.APPLICATION_XML_VALUE}
+    )
+    public Book update(@RequestBody Book book) {
+        return bookService.updateBook(book);
+    }
+
+    @DeleteMapping(value = "/{id}",
+            produces = {
+                    MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_YAML_VALUE, MediaType.APPLICATION_XML_VALUE
+            })
+    public void delete(@PathVariable("id") Long id) {
+        bookService.deleteBook(id);
+    }
+
 
 }
