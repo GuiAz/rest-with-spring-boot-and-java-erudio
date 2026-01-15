@@ -1,5 +1,6 @@
 package br.com.erudio.services;
 
+import br.com.erudio.data.dto.BookDTO;
 import br.com.erudio.exception.RequiredObjectIsNullException;
 import br.com.erudio.exception.ResourceNotFoundException;
 import br.com.erudio.model.Book;
@@ -8,6 +9,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import static br.com.erudio.mapper.ObjectMapper.parseListObjects;
+import static br.com.erudio.mapper.ObjectMapper.parseObjects;
 
 import java.util.List;
 
@@ -19,29 +23,37 @@ public class BookService {
     @Autowired
     private BookRepository bookRepository;
 
-    public List<Book> findAllBooks() {
+    public List<BookDTO> findAllBooks() {
         logger.warn("Find All Books");
 
+        var listaEntidade = bookRepository.findAll();
+        var dto = parseListObjects(listaEntidade, BookDTO.class );
 
-        return bookRepository.findAll();
+        return dto;
     }
 
-    public Book findBookById(Long id) {
+    public BookDTO findBookById(Long id) {
         logger.warn("Find a single Book by Id");
 
-        return bookRepository.findById(id)
+        var entidade = bookRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Book not found"));
+        var dto = parseObjects(entidade, BookDTO.class);
+
+        return dto;
     }
 
-    public Book createBook(Book book) {
+    public BookDTO createBook(Book book) {
         logger.warn("Create a new Book");
 
         if (book == null) throw new RequiredObjectIsNullException();
 
-        return bookRepository.save(book);
+        var entidade = bookRepository.save(book);
+        var dto = parseObjects(entidade, BookDTO.class);
+
+        return dto;
     }
 
-    public Book updateBook(Book book) {
+    public BookDTO updateBook(Book book) {
         logger.warn("Update a book by Id");
 
         Book bookEntity = bookRepository.findById(book.getId())
@@ -51,7 +63,10 @@ public class BookService {
         bookEntity.setPrice(book.getPrice());
         bookEntity.setTitle(book.getTitle());
 
-        return bookRepository.save(bookEntity);
+        var entidade = bookRepository.save(bookEntity);
+        var dto = parseObjects(entidade, BookDTO.class);
+
+        return dto;
     }
 
     public void deleteBook(Long id) {

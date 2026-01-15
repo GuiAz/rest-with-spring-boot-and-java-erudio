@@ -1,5 +1,6 @@
 package br.com.erudio.controllers;
 
+import br.com.erudio.data.dto.BookDTO;
 import br.com.erudio.model.Book;
 import br.com.erudio.services.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ public class BookController {
             MediaType.APPLICATION_XML_VALUE,
             MediaType.APPLICATION_YAML_VALUE
     })
-    public List<Book> findAll() {
+    public List<BookDTO> findAll() {
         return bookService.findAllBooks();
     }
 
@@ -31,7 +32,7 @@ public class BookController {
                     MediaType.APPLICATION_YAML_VALUE,
                     MediaType.APPLICATION_XML_VALUE
             })
-    public Book findById(@PathVariable("id") Long id) {
+    public BookDTO findById(@PathVariable("id") Long id) {
         return bookService.findBookById(id);
     }
 
@@ -39,7 +40,7 @@ public class BookController {
             consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_YAML_VALUE, MediaType.APPLICATION_XML_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_YAML_VALUE, MediaType.APPLICATION_XML_VALUE}
     )
-    public Book create(@RequestBody Book book) {
+    public BookDTO create(@RequestBody Book book) {
         return bookService.createBook(book);
     }
 
@@ -47,7 +48,7 @@ public class BookController {
             consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_YAML_VALUE, MediaType.APPLICATION_XML_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_YAML_VALUE, MediaType.APPLICATION_XML_VALUE}
     )
-    public Book update(@RequestBody Book book) {
+    public BookDTO update(@RequestBody Book book) {
         return bookService.updateBook(book);
     }
 
