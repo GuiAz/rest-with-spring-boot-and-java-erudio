@@ -1,0 +1,9 @@
+br\com\erudio\integrationtests\testcontainers\AbstractIntegrationTest.class
+br\com\erudio\unittests\mapper\mocks\MockBook.class
+br\com\erudio\unittests\mapper\ObjectMapperTests.class
+br\com\erudio\unittests\services\BookServicesTest.class
+br\com\erudio\unittests\services\PersonServicesTest.class
+br\com\erudio\config\TestConfigs.class
+br\com\erudio\integrationtests\testcontainers\AbstractIntegrationTest$Initializer.class
+br\com\erudio\unittests\mapper\mocks\MockPerson.class
+br\com\erudio\integrationtests\swagger\SwaggerIntegrationTest.class

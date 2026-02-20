@@ -2,7 +2,7 @@ package br.com.erudio.controllers;
 
 import br.com.erudio.data.dto.BookDTO;
 import br.com.erudio.model.Book;
-import br.com.erudio.services.BookService;
+import br.com.erudio.unittests.services.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;

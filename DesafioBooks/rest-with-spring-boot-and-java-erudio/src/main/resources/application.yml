@@ -15,7 +15,7 @@ spring:
     open-in-view: false
 logging:
   level:
-#    root: WARN
+    root: INFO
     br.com.erudio: DEBUG
 springdoc:
   paths-to-match: /api/**/v1/**
