@@ -46,7 +46,7 @@ class BookControllerJsonTest extends AbstractIntegrationTest {
 
         specification = new RequestSpecBuilder()
             .addHeader(TestConfigs.HEADER_PARAM_ORIGIN, TestConfigs.ORIGIN_ERUDIO)
-            .setBasePath("/api/book/v1")
+            .setBasePath("/api/books/v1")
             .setPort(TestConfigs.SERVER_PORT)
                 .addFilter(new RequestLoggingFilter(LogDetail.ALL))
                 .addFilter(new ResponseLoggingFilter(LogDetail.ALL))
@@ -174,9 +174,9 @@ class BookControllerJsonTest extends AbstractIntegrationTest {
         assertNotNull(bookOne.getAuthor());
         assertNotNull(bookOne.getPrice());
         assertTrue(bookOne.getId() > 0);
-        assertEquals("Big Data: como extrair volume, variedade, velocidade e valor da avalanche de informação cotidiana", bookOne.getTitle());
-        assertEquals("Viktor Mayer-Schonberger e Kenneth Kukier", bookOne.getAuthor());
-        assertEquals(54.00, bookOne.getPrice());
+        assertEquals("Implantando a governança de TI", bookOne.getTitle());
+        assertEquals("Aguinaldo Aragon Fernandes e Vladimir Ferraz de Abreu", bookOne.getAuthor());
+        assertEquals(54.0, bookOne.getPrice());
 
         BookDTO foundBookFive = books.get(4);
 
@@ -185,9 +185,9 @@ class BookControllerJsonTest extends AbstractIntegrationTest {
         assertNotNull(foundBookFive.getAuthor());
         assertNotNull(foundBookFive.getPrice());
         assertTrue(foundBookFive.getId() > 0);
-        assertEquals("Domain Driven Design", foundBookFive.getTitle());
-        assertEquals("Eric Evans", foundBookFive.getAuthor());
-        assertEquals(92.00, foundBookFive.getPrice());
+        assertEquals("Head First Design Patterns", foundBookFive.getTitle());
+        assertEquals("Eric Freeman, Elisabeth Freeman, Kathy Sierra, Bert Bates", foundBookFive.getAuthor());
+        assertEquals(110.0, foundBookFive.getPrice());
     }
 
     private void mockBook() {

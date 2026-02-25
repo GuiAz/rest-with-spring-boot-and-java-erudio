@@ -74,7 +74,7 @@ class BookControllerXmlTest extends AbstractIntegrationTest {
         assertEquals("Nigel Poulton", book.getAuthor());
         assertEquals(55.99, book.getPrice());
     }
-    
+
     @Test
     @Order(2)
     void updateTest() throws JsonProcessingException {
@@ -173,9 +173,9 @@ class BookControllerXmlTest extends AbstractIntegrationTest {
         assertNotNull(bookOne.getAuthor());
         assertNotNull(bookOne.getPrice());
         assertTrue(bookOne.getId() > 0);
-        assertEquals("Big Data: como extrair volume, variedade, velocidade e valor da avalanche de informação cotidiana", bookOne.getTitle());
-        assertEquals("Viktor Mayer-Schonberger e Kenneth Kukier", bookOne.getAuthor());
-        assertEquals(54.00, bookOne.getPrice());
+        assertEquals("Implantando a governança de TI", bookOne.getTitle());
+        assertEquals("Aguinaldo Aragon Fernandes e Vladimir Ferraz de Abreu", bookOne.getAuthor());
+        assertEquals(54.0, bookOne.getPrice());
 
         BookDTO foundBookFive = books.get(4);
 
@@ -184,9 +184,9 @@ class BookControllerXmlTest extends AbstractIntegrationTest {
         assertNotNull(foundBookFive.getAuthor());
         assertNotNull(foundBookFive.getPrice());
         assertTrue(foundBookFive.getId() > 0);
-        assertEquals("Domain Driven Design", foundBookFive.getTitle());
-        assertEquals("Eric Evans", foundBookFive.getAuthor());
-        assertEquals(92.00, foundBookFive.getPrice());
+        assertEquals("Head First Design Patterns", foundBookFive.getTitle());
+        assertEquals("Eric Freeman, Elisabeth Freeman, Kathy Sierra, Bert Bates", foundBookFive.getAuthor());
+        assertEquals(110.0, foundBookFive.getPrice());
     }
 
     private void mockBook() {

@@ -14,7 +14,8 @@ public class BookDTO implements Serializable {
 
     private Long id;
     private String author;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy", timezone = "UTC")
+    @JsonFormat(shape = JsonFormat.Shape.STRING,
+            pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")  // ← mesmo padrão
     private Date launchDate;
     private Double price;
     private String title;

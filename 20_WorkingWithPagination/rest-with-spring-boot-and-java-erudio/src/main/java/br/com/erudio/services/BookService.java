@@ -64,18 +64,20 @@ public class BookService {
         return dto;
     }
 
-    public BookDTO createBook(Book book) {
+    public BookDTO createBook(BookDTO book) {
         logger.warn("Create a new Book");
 
         if (book == null) throw new RequiredObjectIsNullException();
 
-        var entidade = bookRepository.save(book);
-        var dto = parseObjects(entidade, BookDTO.class);
+        var entidade = parseObjects(book, Book.class);  // ← converte DTO → Entity
+        var saved = bookRepository.save(entidade);
+        var dto = parseObjects(saved, BookDTO.class);
 
+        addHateoasLinks(dto);
         return dto;
     }
 
-    public BookDTO updateBook(Book book) {
+    public BookDTO updateBook(BookDTO book) {  // ← BookDTO
         logger.warn("Update a book by Id");
 
         Book bookEntity = bookRepository.findById(book.getId())
@@ -85,11 +87,13 @@ public class BookService {
         bookEntity.setPrice(book.getPrice());
         bookEntity.setTitle(book.getTitle());
 
-        var entidade = bookRepository.save(bookEntity);
-        var dto = parseObjects(entidade, BookDTO.class);
+        var saved = bookRepository.save(bookEntity);
+        var dto = parseObjects(saved, BookDTO.class);
 
+        addHateoasLinks(dto);
         return dto;
     }
+
 
     public void deleteBook(Long id) {
         logger.warn("Deleting a existing book");

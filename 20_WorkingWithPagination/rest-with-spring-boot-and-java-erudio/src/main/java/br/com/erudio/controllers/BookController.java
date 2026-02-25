@@ -10,6 +10,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.PagedModel;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -53,7 +54,7 @@ public class BookController implements BookControllerDocs {
             consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_YAML_VALUE, MediaType.APPLICATION_XML_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_YAML_VALUE, MediaType.APPLICATION_XML_VALUE}
     )
-    public BookDTO create(@RequestBody Book book) {
+    public BookDTO create(@RequestBody BookDTO book) {  // ← BookDTO
         return bookService.createBook(book);
     }
 
@@ -61,7 +62,7 @@ public class BookController implements BookControllerDocs {
             consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_YAML_VALUE, MediaType.APPLICATION_XML_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_YAML_VALUE, MediaType.APPLICATION_XML_VALUE}
     )
-    public BookDTO update(@RequestBody Book book) {
+    public BookDTO update(@RequestBody BookDTO book) {  // ← BookDTO
         return bookService.updateBook(book);
     }
 
@@ -69,6 +70,7 @@ public class BookController implements BookControllerDocs {
             produces = {
                     MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_YAML_VALUE, MediaType.APPLICATION_XML_VALUE
             })
+    @ResponseStatus(HttpStatus.NO_CONTENT)  // ← adicione isso
     public void delete(@PathVariable("id") Long id) {
         bookService.deleteBook(id);
     }

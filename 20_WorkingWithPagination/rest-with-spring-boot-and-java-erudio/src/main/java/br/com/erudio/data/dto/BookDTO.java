@@ -1,12 +1,14 @@
 package br.com.erudio.data.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.xml.bind.annotation.XmlRootElement;
 import org.springframework.hateoas.RepresentationModel;
 import org.springframework.hateoas.server.core.Relation;
 
 import java.util.Date;
 import java.util.Objects;
 
+@XmlRootElement
 @Relation(collectionRelation = "books")
 public class BookDTO extends RepresentationModel<BookDTO> {
 
@@ -14,7 +16,8 @@ public class BookDTO extends RepresentationModel<BookDTO> {
 
     private Long id;
     private String author;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy", timezone = "UTC")
+    @JsonFormat(shape = JsonFormat.Shape.STRING,
+            pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
     private Date launchDate;
     private Double price;
     private String title;
