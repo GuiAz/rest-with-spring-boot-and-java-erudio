@@ -18,7 +18,6 @@ import org.junit.jupiter.api.*;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 
-import java.util.Arrays;
 import java.util.List;
 
 import static io.restassured.RestAssured.given;
@@ -224,6 +223,48 @@ class PersonControllerYamlTest extends AbstractIntegrationTest {
         Assertions.assertEquals("Suite 55", personTwo.getAddress());
         Assertions.assertEquals("Female", personTwo.getGender());
         Assertions.assertFalse((personTwo.getEnabled()));
+    }
+
+    @Test
+    @Order(7)
+    void findByNameTest() throws JsonProcessingException {
+
+        var response = given().config(RestAssured.config()
+                        .encoderConfig(EncoderConfig.encoderConfig().encodeContentTypeAs(MediaType.APPLICATION_YAML_VALUE, ContentType.TEXT))
+                ).spec(specification)
+                .accept(MediaType.APPLICATION_YAML_VALUE)
+                .pathParam("firstName", "and")
+                .queryParams("page", 0, "size", 12, "direction", "asc")
+                .when()
+                .get("findPeopleByName/{firstName}")
+                .then()
+                .statusCode(200)
+                .contentType(MediaType.APPLICATION_YAML_VALUE)
+                .extract()
+                .body()
+                .as(PageModelPerson.class, objectMapper);
+
+
+        List<PersonDTO> people = response.getContent();
+
+        PersonDTO personOne = people.get(0);
+
+        Assertions.assertNotNull(personOne.getId());
+        Assertions.assertTrue(personOne.getId() > 0);
+
+        Assertions.assertEquals("Alexandra", personOne.getFirstName());
+        Assertions.assertEquals("Ganning", personOne.getLastName());
+        Assertions.assertEquals("14th Floor", personOne.getAddress());
+        Assertions.assertEquals("Female", personOne.getGender());
+        Assertions.assertFalse((personOne.getEnabled()));
+
+        PersonDTO personTwo = people.get(7);
+
+        Assertions.assertEquals("Land", personTwo.getFirstName());
+        Assertions.assertEquals("Allderidge", personTwo.getLastName());
+        Assertions.assertEquals("Apt 392", personTwo.getAddress());
+        Assertions.assertEquals("Male", personTwo.getGender());
+        Assertions.assertTrue((personTwo.getEnabled()));
     }
 
     private void mockPerson() {
