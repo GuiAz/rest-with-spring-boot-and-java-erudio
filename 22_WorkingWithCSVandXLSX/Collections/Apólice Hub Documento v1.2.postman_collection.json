@@ -1,0 +1,769 @@
+{
+  "info": {
+    "_postman_id": "2ee9c802-777b-4e16-9c66-d869404a41b9",
+    "name": "Apólice Hub Documento v1.2",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "43132932",
+    "_collection_link": "https://go.postman.co/collection/43132932-2ee9c802-777b-4e16-9c66-d869404a41b9?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "RHBK HML",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "var jsonData = JSON.parse(responseBody);",
+              "pm.collectionVariables.set(\"access_token\", jsonData.access_token);"
+            ],
+            "type": "text/javascript",
+            "packages": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "password",
+              "value": "onKQav0hczhFMJAVPxTqbglIPXeVM5ug",
+              "type": "string"
+            },
+            {
+              "key": "username",
+              "value": "ca3b2a5a-a47d-4619-a7ae-3a71a86b448f",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/x-www-form-urlencoded"
+          },
+          {
+            "key": "User-Agent",
+            "value": "HTTPie"
+          },
+          {
+            "key": "Cookie",
+            "value": "840b85ca4b16d1ef7471689bbd1cd678=367ceac375e0bfbf9a3d25392fedd68b; visid_incap_2574365=tdTC5yizTryNhkpdgbKmErpqqmcAAAAAQUIPAAAAAADvPTo5y0eeyFYaVg1eeWJJ; visid_incap_2683318=Di/nBtF0T0uu0AZ+q6FmFnDUnGcAAAAAQUIPAAAAAAAQPVgtzz7Z8Pu8lv5FAj/H; visid_incap_2683396=MQBFSPqfRfCIjLM5FBKmrKBzomcAAAAAQUIPAAAAAADPUBKmZz+je+WhneCIhgY7; visid_incap_2683397=lpBMLTOfSS+3doHs/12WWwPek2cAAAAAQUIPAAAAAAB0VzMXURDT6+yqRTfHydmn; visid_incap_2837468=eobypGUsTsqOZwLdfn/2vZrVnGcAAAAAQUIPAAAAAAA5u9y3QxLczKoTG01vkxRY; visid_incap_2837476=KL6g9pCyQauFaSJio/6YJorgk2cAAAAAQUIPAAAAAACaIJb7QYXGoQ84KI2ASlvj; incap_ses_1694_2683318=CF3MHSWA9X+f1pOsQEyCFzlHrmgAAAAArGb0xMwYS8ksI1JbCBhHTw==; nlbi_2683318=+mxkAEH7Hl+3wF9hVIinfgAAAABEydHl3Fzq06eI5RduAjGP; visid_incap_2574365=tdTC5yizTryNhkpdgbKmErpqqmcAAAAAQUIPAAAAAADvPTo5y0eeyFYaVg1eeWJJ; visid_incap_2683318=QjF1nlWgRUuACGBRb6QlWDlHrmgAAAAAQUIPAAAAAACBZWU83zNyCRpDSH9sJrxl; visid_incap_2683396=MQBFSPqfRfCIjLM5FBKmrKBzomcAAAAAQUIPAAAAAADPUBKmZz+je+WhneCIhgY7; visid_incap_2683397=lpBMLTOfSS+3doHs/12WWwPek2cAAAAAQUIPAAAAAAB0VzMXURDT6+yqRTfHydmn; visid_incap_2837468=eobypGUsTsqOZwLdfn/2vZrVnGcAAAAAQUIPAAAAAAA5u9y3QxLczKoTG01vkxRY; visid_incap_2837476=KL6g9pCyQauFaSJio/6YJorgk2cAAAAAQUIPAAAAAACaIJb7QYXGoQ84KI2ASlvj; b4864e4c8f764093c716a2a052a9c3eb=2e9c5740602e4c8a9b17253ec44c2b04; f44ed419d0abd3b5ff9a0f6aa041252a=9d4608abf5f06e402f1b29b7f4588f39"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "grant_type",
+              "value": "client_credentials",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "https://sso-corp-op-hml.portoseguro.brasil/realms/mulesoft/protocol/openid-connect/token",
+          "protocol": "https",
+          "host": [
+            "sso-corp-op-hml",
+            "portoseguro",
+            "brasil"
+          ],
+          "path": [
+            "realms",
+            "mulesoft",
+            "protocol",
+            "openid-connect",
+            "token"
+          ]
+        },
+        "description": "Generated from cURL: curl --location 'https://portoapi-dev.portoseguro.com.br/keycloak/realms/TST/protocol/openid-connect/token' \\\n--header 'Content-Type: application/x-www-form-urlencoded' \\\n--header 'User-Agent: HTTPie' \\\n--header 'Cookie: 840b85ca4b16d1ef7471689bbd1cd678=367ceac375e0bfbf9a3d25392fedd68b; visid_incap_2574365=tdTC5yizTryNhkpdgbKmErpqqmcAAAAAQUIPAAAAAADvPTo5y0eeyFYaVg1eeWJJ; visid_incap_2683318=Di/nBtF0T0uu0AZ+q6FmFnDUnGcAAAAAQUIPAAAAAAAQPVgtzz7Z8Pu8lv5FAj/H; visid_incap_2683396=MQBFSPqfRfCIjLM5FBKmrKBzomcAAAAAQUIPAAAAAADPUBKmZz+je+WhneCIhgY7; visid_incap_2683397=lpBMLTOfSS+3doHs/12WWwPek2cAAAAAQUIPAAAAAAB0VzMXURDT6+yqRTfHydmn; visid_incap_2837468=eobypGUsTsqOZwLdfn/2vZrVnGcAAAAAQUIPAAAAAAA5u9y3QxLczKoTG01vkxRY; visid_incap_2837476=KL6g9pCyQauFaSJio/6YJorgk2cAAAAAQUIPAAAAAACaIJb7QYXGoQ84KI2ASlvj; incap_ses_1694_2683318=CF3MHSWA9X+f1pOsQEyCFzlHrmgAAAAArGb0xMwYS8ksI1JbCBhHTw==; nlbi_2683318=+mxkAEH7Hl+3wF9hVIinfgAAAABEydHl3Fzq06eI5RduAjGP; visid_incap_2574365=tdTC5yizTryNhkpdgbKmErpqqmcAAAAAQUIPAAAAAADvPTo5y0eeyFYaVg1eeWJJ; visid_incap_2683318=QjF1nlWgRUuACGBRb6QlWDlHrmgAAAAAQUIPAAAAAACBZWU83zNyCRpDSH9sJrxl; visid_incap_2683396=MQBFSPqfRfCIjLM5FBKmrKBzomcAAAAAQUIPAAAAAADPUBKmZz+je+WhneCIhgY7; visid_incap_2683397=lpBMLTOfSS+3doHs/12WWwPek2cAAAAAQUIPAAAAAAB0VzMXURDT6+yqRTfHydmn; visid_incap_2837468=eobypGUsTsqOZwLdfn/2vZrVnGcAAAAAQUIPAAAAAAA5u9y3QxLczKoTG01vkxRY; visid_incap_2837476=KL6g9pCyQauFaSJio/6YJorgk2cAAAAAQUIPAAAAAACaIJb7QYXGoQ84KI2ASlvj; b4864e4c8f764093c716a2a052a9c3eb=2e9c5740602e4c8a9b17253ec44c2b04; f44ed419d0abd3b5ff9a0f6aa041252a=9d4608abf5f06e402f1b29b7f4588f39' \\\n--header 'Authorization: Basic MWRlM2NmNDgtZGFjNC00ZDg5LWI2YTctYTRlODAyM2FlNTM2OjVlTzlQd1JXWm50WENVTmVPVEM1Y0JrOWxzODNJdnRm' \\\n--data-urlencode 'grant_type=client_credentials'"
+      },
+      "response": []
+    },
+    {
+      "name": "RHBK TST",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "var jsonData = JSON.parse(responseBody);",
+              "pm.collectionVariables.set(\"access_token\", jsonData.access_token);"
+            ],
+            "type": "text/javascript",
+            "packages": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "password",
+              "value": "LxNe7e86LGtm2c7DKjyYAadPEYSDZzoW",
+              "type": "string"
+            },
+            {
+              "key": "username",
+              "value": "31b9a9b0-13d6-4532-81b2-3c11acc5b8d2",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/x-www-form-urlencoded"
+          },
+          {
+            "key": "User-Agent",
+            "value": "HTTPie"
+          },
+          {
+            "key": "Cookie",
+            "value": "840b85ca4b16d1ef7471689bbd1cd678=367ceac375e0bfbf9a3d25392fedd68b; visid_incap_2574365=tdTC5yizTryNhkpdgbKmErpqqmcAAAAAQUIPAAAAAADvPTo5y0eeyFYaVg1eeWJJ; visid_incap_2683318=Di/nBtF0T0uu0AZ+q6FmFnDUnGcAAAAAQUIPAAAAAAAQPVgtzz7Z8Pu8lv5FAj/H; visid_incap_2683396=MQBFSPqfRfCIjLM5FBKmrKBzomcAAAAAQUIPAAAAAADPUBKmZz+je+WhneCIhgY7; visid_incap_2683397=lpBMLTOfSS+3doHs/12WWwPek2cAAAAAQUIPAAAAAAB0VzMXURDT6+yqRTfHydmn; visid_incap_2837468=eobypGUsTsqOZwLdfn/2vZrVnGcAAAAAQUIPAAAAAAA5u9y3QxLczKoTG01vkxRY; visid_incap_2837476=KL6g9pCyQauFaSJio/6YJorgk2cAAAAAQUIPAAAAAACaIJb7QYXGoQ84KI2ASlvj; incap_ses_1694_2683318=CF3MHSWA9X+f1pOsQEyCFzlHrmgAAAAArGb0xMwYS8ksI1JbCBhHTw==; nlbi_2683318=+mxkAEH7Hl+3wF9hVIinfgAAAABEydHl3Fzq06eI5RduAjGP; visid_incap_2574365=tdTC5yizTryNhkpdgbKmErpqqmcAAAAAQUIPAAAAAADvPTo5y0eeyFYaVg1eeWJJ; visid_incap_2683318=QjF1nlWgRUuACGBRb6QlWDlHrmgAAAAAQUIPAAAAAACBZWU83zNyCRpDSH9sJrxl; visid_incap_2683396=MQBFSPqfRfCIjLM5FBKmrKBzomcAAAAAQUIPAAAAAADPUBKmZz+je+WhneCIhgY7; visid_incap_2683397=lpBMLTOfSS+3doHs/12WWwPek2cAAAAAQUIPAAAAAAB0VzMXURDT6+yqRTfHydmn; visid_incap_2837468=eobypGUsTsqOZwLdfn/2vZrVnGcAAAAAQUIPAAAAAAA5u9y3QxLczKoTG01vkxRY; visid_incap_2837476=KL6g9pCyQauFaSJio/6YJorgk2cAAAAAQUIPAAAAAACaIJb7QYXGoQ84KI2ASlvj; b4864e4c8f764093c716a2a052a9c3eb=2e9c5740602e4c8a9b17253ec44c2b04; f44ed419d0abd3b5ff9a0f6aa041252a=9d4608abf5f06e402f1b29b7f4588f39"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "grant_type",
+              "value": "client_credentials",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "https://sso-corp-op-dev.portoseguro.brasil/realms/mulesoft/protocol/openid-connect/token",
+          "protocol": "https",
+          "host": [
+            "sso-corp-op-dev",
+            "portoseguro",
+            "brasil"
+          ],
+          "path": [
+            "realms",
+            "mulesoft",
+            "protocol",
+            "openid-connect",
+            "token"
+          ]
+        },
+        "description": "Generated from cURL: curl --location 'https://portoapi-dev.portoseguro.com.br/keycloak/realms/TST/protocol/openid-connect/token' \\\n--header 'Content-Type: application/x-www-form-urlencoded' \\\n--header 'User-Agent: HTTPie' \\\n--header 'Cookie: 840b85ca4b16d1ef7471689bbd1cd678=367ceac375e0bfbf9a3d25392fedd68b; visid_incap_2574365=tdTC5yizTryNhkpdgbKmErpqqmcAAAAAQUIPAAAAAADvPTo5y0eeyFYaVg1eeWJJ; visid_incap_2683318=Di/nBtF0T0uu0AZ+q6FmFnDUnGcAAAAAQUIPAAAAAAAQPVgtzz7Z8Pu8lv5FAj/H; visid_incap_2683396=MQBFSPqfRfCIjLM5FBKmrKBzomcAAAAAQUIPAAAAAADPUBKmZz+je+WhneCIhgY7; visid_incap_2683397=lpBMLTOfSS+3doHs/12WWwPek2cAAAAAQUIPAAAAAAB0VzMXURDT6+yqRTfHydmn; visid_incap_2837468=eobypGUsTsqOZwLdfn/2vZrVnGcAAAAAQUIPAAAAAAA5u9y3QxLczKoTG01vkxRY; visid_incap_2837476=KL6g9pCyQauFaSJio/6YJorgk2cAAAAAQUIPAAAAAACaIJb7QYXGoQ84KI2ASlvj; incap_ses_1694_2683318=CF3MHSWA9X+f1pOsQEyCFzlHrmgAAAAArGb0xMwYS8ksI1JbCBhHTw==; nlbi_2683318=+mxkAEH7Hl+3wF9hVIinfgAAAABEydHl3Fzq06eI5RduAjGP; visid_incap_2574365=tdTC5yizTryNhkpdgbKmErpqqmcAAAAAQUIPAAAAAADvPTo5y0eeyFYaVg1eeWJJ; visid_incap_2683318=QjF1nlWgRUuACGBRb6QlWDlHrmgAAAAAQUIPAAAAAACBZWU83zNyCRpDSH9sJrxl; visid_incap_2683396=MQBFSPqfRfCIjLM5FBKmrKBzomcAAAAAQUIPAAAAAADPUBKmZz+je+WhneCIhgY7; visid_incap_2683397=lpBMLTOfSS+3doHs/12WWwPek2cAAAAAQUIPAAAAAAB0VzMXURDT6+yqRTfHydmn; visid_incap_2837468=eobypGUsTsqOZwLdfn/2vZrVnGcAAAAAQUIPAAAAAAA5u9y3QxLczKoTG01vkxRY; visid_incap_2837476=KL6g9pCyQauFaSJio/6YJorgk2cAAAAAQUIPAAAAAACaIJb7QYXGoQ84KI2ASlvj; b4864e4c8f764093c716a2a052a9c3eb=2e9c5740602e4c8a9b17253ec44c2b04; f44ed419d0abd3b5ff9a0f6aa041252a=9d4608abf5f06e402f1b29b7f4588f39' \\\n--header 'Authorization: Basic MWRlM2NmNDgtZGFjNC00ZDg5LWI2YTctYTRlODAyM2FlNTM2OjVlTzlQd1JXWm50WENVTmVPVEM1Y0JrOWxzODNJdnRm' \\\n--data-urlencode 'grant_type=client_credentials'"
+      },
+      "response": []
+    },
+    {
+      "name": "Download Apólice PDF -  com senha",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{access_token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "User-Agent",
+            "value": "Aplicação Cliente",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "codigoSusep",
+            "value": "SPF37J",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"numeroSucursal\": 36,\n  \"numeroApolice\": 2477194,\n  \"origemProposta\": 12,\n  \"numeroProposta\": 223203,\n  \"tipoRetorno\": 1\n  }\n\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://auto-apol-hml.apps.ocpnpr.portoseguro.brasil/sboot-auto-apol-hub-documentos/v1/apolice/pdf",
+          "protocol": "https",
+          "host": [
+            "auto-apol-hml",
+            "apps",
+            "ocpnpr",
+            "portoseguro",
+            "brasil"
+          ],
+          "path": [
+            "sboot-auto-apol-hub-documentos",
+            "v1",
+            "apolice",
+            "pdf"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Download Apólice PDF -  com senha - Cenário token da NP",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.ew0KICJzdWIiOiJGMDEyMjU2OSIsDQogInJvbGVzIjogWyJBdXRvbW92ZWwuQ2FkYXN0cm9BZG1pbmlzdHJhdGl2by5QZXJmaWxNYW51dGVuY2FvIiwiQXV0b21vdmVsLk5vdmFQbGF0YWZvcm1hLkNhbGN1bG8uUGVyZmlsQ2FsY3VsaXN0YSIsIkF1dG9tb3ZlbC5Ob3ZhUGxhdGFmb3JtYS5DYWxjdWxvLlBlcmZpbENvcnJldG9yIiwiQXV0b21vdmVsLk5vdmFQbGF0YWZvcm1hLkNhbGN1bG8uUGVyZmlsRnVuY2lvbmFyaW9NYXJjZXAiLCJBdXRvbW92ZWwuTm92YVBsYXRhZm9ybWEuQ2FsY3Vsby5QZXJmaWxJbnRlcm5vIiwiQXV0b21vdmVsLk5vdmFQbGF0YWZvcm1hLkNhbGN1bG8uUGVyZmlsVHJhbnNtaXNzYW9Mb3RlIl0sDQogIm5hbWUiOiAiRjAxMjI1NjkiLA0KICJpc3MiOiAiaHR0cHM6Ly9hcGkucG9ydG9zZWd1cm8uY29tLmJyIiwNCiAiY29kaWdvQXV4IjogIiIsDQogInBvcnRhbCI6IDMsDQogImV4cCI6IDIxNDc0ODM2NDANCn0.qRgC4tIl14Fa6Qcr1mxgSrbF2uBV4ymFruspnifzx0NHcMBl8PLNfB_gLQ5yr3NtMNbmTBeNbsepr2ABnADAPimQKX4ureThS-cQBMBs2kUDTlg0TrPYvV35tWgaOjDmc_TeKS2HMd21GZextWL_Ei2ipGpiEyovdwGc1kmhpW1T1QzQTfPNGulSZOQpnS3x8AUs5o7A9KRCk7kV-WOkUOlFgkjZ6_Qgn9gv5b1CV0eL8psABCmQ9piKsoCPYoQlveiXgyTOWcxsVHgn4E01oIK3l12YqunivLcUVqxKRHGW4DUN0W7mA2PgZeoRKEyJybf5BDvlLJkYxPZITFzDjw",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "User-Agent",
+            "value": "Aplicação Cliente",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "codigoSusep",
+            "value": "SPF37J",
+            "type": "text",
+            "disabled": true
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"numeroSucursal\": 36,\n  \"numeroApolice\": 2477194,\n  \"origemProposta\": 12,\n  \"numeroProposta\": 223203,\n  \"tipoRetorno\": 1\n  }\n\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{host}}/v1/apolice/pdf",
+          "host": [
+            "{{host}}"
+          ],
+          "path": [
+            "v1",
+            "apolice",
+            "pdf"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Download Apólice PDF -  sem senha",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{access_token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "User-Agent",
+            "value": "Aplicação Cliente",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "codigoSusep",
+            "value": "SPF37J",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"numeroSucursal\": 36,\n  \"numeroApolice\": 2477194,\n  \"origemProposta\": 12,\n  \"numeroProposta\": 223203,\n  \"tipoRetorno\": 2\n  }\n\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{host}}/v1/apolice/pdf",
+          "host": [
+            "{{host}}"
+          ],
+          "path": [
+            "v1",
+            "apolice",
+            "pdf"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Download Apólice PDF -  com senha e sem senha",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{access_token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "User-Agent",
+            "value": "Aplicação Cliente",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "codigoSusep",
+            "value": "SPF37J",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"numeroSucursal\": 36,\n  \"numeroApolice\": 2477194,\n  \"origemProposta\": 12,\n  \"numeroProposta\": 223203,\n  \"tipoRetorno\": 3\n  }\n\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{host}}/v1/apolice/pdf",
+          "host": [
+            "{{host}}"
+          ],
+          "path": [
+            "v1",
+            "apolice",
+            "pdf"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Download Apólice PDF -  ERR004 - parametros incorretos",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{access_token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "User-Agent",
+            "value": "Aplicação Cliente",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "codigoSusep",
+            "value": "SPF37J",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"numeroSucursal\": 36,\n  \"numeroApolice\": 2477194,\n  \"origemProposta\": 12,\n  \"numeroProposta\": 223203,\n  \"tipoRetorno\": 4\n  }\n\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{host}}/v1/apolice/pdf",
+          "host": [
+            "{{host}}"
+          ],
+          "path": [
+            "v1",
+            "apolice",
+            "pdf"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Download Apólice PDF -  ERR012 - Dados do corretor não encontrado para esta apólice.",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{access_token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "User-Agent",
+            "value": "Aplicação Cliente",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "codigoSusep",
+            "value": "SPF37J",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"numeroSucursal\": 336,\n  \"numeroApolice\": 2477194,\n  \"origemProposta\": 12,\n  \"numeroProposta\": 223203,\n  \"tipoRetorno\": 3\n  }\n\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{host}}/v1/apolice/pdf",
+          "host": [
+            "{{host}}"
+          ],
+          "path": [
+            "v1",
+            "apolice",
+            "pdf"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Download Apólice PDF -  ERR013 - Número SUSEP inválido para o corretor",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{access_token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "User-Agent",
+            "value": "Aplicação Cliente",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "codigoSusep",
+            "value": "SPF37J",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"numeroSucursal\": 36,\n  \"numeroApolice\": 6573236,\n  \"origemProposta\": 12,\n  \"numeroProposta\": 21882995,\n  \"tipoRetorno\": 2\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{host}}/v1/apolice/pdf",
+          "host": [
+            "{{host}}"
+          ],
+          "path": [
+            "v1",
+            "apolice",
+            "pdf"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Download Apólice PDF - ERR014 - Não foi possível recuperar informações do documento (1)",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{access_token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "User-Agent",
+            "value": "Aplicação Cliente",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "codigoSusep",
+            "value": "COL10J",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"numeroSucursal\": 95,\n  \"numeroApolice\": 3447600,\n  \"origemProposta\": 20,\n  \"numeroProposta\": 13777951,\n  \"tipoRetorno\": 3\n  }\n\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{host}}/v1/apolice/pdf",
+          "host": [
+            "{{host}}"
+          ],
+          "path": [
+            "v1",
+            "apolice",
+            "pdf"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Download Apólice PDF - ERR014 - Não foi possível recuperar informações do documento (2)",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{access_token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "User-Agent",
+            "value": "Aplicação Cliente"
+          },
+          {
+            "key": "codigoSusep",
+            "value": "C1192J"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"numeroSucursal\": 36,\n  \"numeroApolice\": 6573236,\n  \"origemProposta\": 12,\n  \"numeroProposta\": 21882995,\n  \"tipoRetorno\": 2\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{host}}/v1/apolice/pdf",
+          "host": [
+            "{{host}}"
+          ],
+          "path": [
+            "v1",
+            "apolice",
+            "pdf"
+          ]
+        },
+        "description": "Generated from cURL: curl --request POST \\\n  --url https://auto-apol-dev.apps.ocpnpr.portoseguro.brasil/sboot-auto-apol-hub-documentos/v1/apolice/pdf \\\n  --header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI3ZzNxOXFUVk1Yek5INXczd29kLTdPVi0taGZmeDlwX3JQUExwRXlqWTM0In0.eyJleHAiOjE3NTYzMDM2NzYsImlhdCI6MTc1NjI5NjQ3NiwianRpIjoiNmFhNTQ4YTItMGZlOS00ODJjLTgzYTMtZWQ0NjlhZTdlNDE3IiwiaXNzIjoiaHR0cHM6Ly9zc28taW50ZXJuby5hdXRoY29ycC5kZXYuYXdzcG9ydG8vYXV0aC9yZWFsbXMvYWRkZXYiLCJhdWQiOlsiY29ycC1hcnF0IiwiaW50ZWdyYWNhbyJdLCJzdWIiOiIwYjIzMzA2YS1kMzZjLTQ4ZmMtOGY0Mi04ZWQ0M2IzMjkxZDUiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhcHAiLCJhbGxvd2VkLW9yaWdpbnMiOlsiKiJdLCJzY29wZSI6Im9wZW5pZCBtaWNyb3Byb2ZpbGUtand0IHJvbGVzX2FkX2dyb3VwcyBwcm9maWxlIGJhc2ljIiwidXBuIjoic2VydmljZS1hY2NvdW50LWFwcCIsImNsaWVudElkIjoiYXBwIiwiY2xpZW50SG9zdCI6IjE3Mi4xNy4xNzMuMTkwIiwicm9sZXMiOlsiZGVmYXVsdC1yb2xlcy1hZGRldiIsIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iXSwiZ3JvdXBzIjpbImRlZmF1bHQtcm9sZXMtYWRkZXYiLCJvZmZsaW5lX2FjY2VzcyIsInVtYV9hdXRob3JpemF0aW9uIl0sInByZWZlcnJlZF91c2VybmFtZSI6InNlcnZpY2UtYWNjb3VudC1hcHAiLCJjbGllbnRBZGRyZXNzIjoiMTcyLjE3LjE3My4xOTAifQ.Vy5CBMtx8F6PwpqMX86_75SlwrxlskrJKHhPJgHk_C9qP5BwwDmR6np6V4PnUKtSmrUT3xUQvZ18azNuImwtHIevxPh_xBA_-VVK6bp6iP_OhX69yv5J25f3PfAZmTcDg8AUaD8srZ_e4fXSOgiwI1KGz9MRVYNmlKrRhyTpMUslXKOlUFzHG3VEcB6rGUkPaR59EBa9Yodu-nU4fNuCxk-P1TG4faOEhaPJJvVwpDoPbr05GmiZOeCOhsQMVyQnBx40CzjBZxjg598yN_ePyU2K-5K64aT__H5wdFg_AmsAUdkQDwJgX85RcEyKUZHfIYpzKP3GHR0Bq5CTEyNevQ' \\\n  --header 'Content-Type: application/json' \\\n  --header 'User-Agent: Aplicação Cliente' \\\n  --header 'codigoSusep: C1192J' \\\n  --data '{\n  \"numeroSucursal\": 36,\n  \"numeroApolice\": 6573236,\n  \"origemProposta\": 12,\n  \"numeroProposta\": 21882995,\n  \"tipoRetorno\": 2\n}'"
+      },
+      "response": []
+    },
+    {
+      "name": "Download Apólice PDF - ERR016 - Falha ao baixar PDF no hub de download",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{access_token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "User-Agent",
+            "value": "Aplicação Cliente",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "codigoSusep",
+            "value": "RK4U0J",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"numeroSucursal\": 36,\n  \"numeroApolice\": 2483097,\n  \"origemProposta\": 12,\n  \"numeroProposta\": 1056193,\n  \"tipoRetorno\": 3\n  }\n\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{host}}/v1/apolice/pdf",
+          "host": [
+            "{{host}}"
+          ],
+          "path": [
+            "v1",
+            "apolice",
+            "pdf"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Download Apólice PDF - ERR017 - Número SUSEP não encontrado no token ou no header",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{access_token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "User-Agent",
+            "value": "Aplicação Cliente",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "codigoSusep",
+            "value": "SPF37J",
+            "type": "text",
+            "disabled": true
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"numeroSucursal\": 36,\n  \"numeroApolice\": 2477194,\n  \"origemProposta\": 12,\n  \"numeroProposta\": 223203,\n  \"tipoRetorno\": 3\n  }\n\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{host}}/v1/apolice/pdf",
+          "host": [
+            "{{host}}"
+          ],
+          "path": [
+            "v1",
+            "apolice",
+            "pdf"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "access_token",
+      "value": ""
+    }
+  ]
+}
