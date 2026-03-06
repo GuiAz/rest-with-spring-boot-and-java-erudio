@@ -6,12 +6,14 @@ import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.springframework.stereotype.Component;
 
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+@Component
 public class XlsxImporter implements FileImporter {
     @Override
     public List<PersonDTO> importFile(InputStream inputStream) throws Exception {
@@ -45,9 +47,9 @@ public class XlsxImporter implements FileImporter {
     private PersonDTO parseRowToPersonDto(Row row) {
         PersonDTO person = new PersonDTO();
         person.setFirstName(row.getCell(0).getStringCellValue());
-        person.setFirstName(row.getCell(1).getStringCellValue());
-        person.setFirstName(row.getCell(2).getStringCellValue());
-        person.setFirstName(row.getCell(3).getStringCellValue());
+        person.setLastName(row.getCell(1).getStringCellValue());
+        person.setAddress(row.getCell(2).getStringCellValue());
+        person.setGender(row.getCell(3).getStringCellValue());
         person.setEnabled(true);
 
         return person;

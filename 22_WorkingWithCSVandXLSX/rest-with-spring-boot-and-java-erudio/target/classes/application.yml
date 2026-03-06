@@ -10,6 +10,9 @@ spring:
     url: jdbc:mysql://localhost:3306/rest_with_spring_boot_erudio?useTimeZone=true&serverTimeZone=UTC
     username: root
     password: memisGui
+  flyway:
+    clean-on-validation-error: true
+    clean-disabled: false
   jpa:
     hibernate:
       ddl-auto: none
