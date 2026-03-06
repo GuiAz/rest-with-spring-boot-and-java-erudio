@@ -15,6 +15,9 @@ import org.springframework.hateoas.PagedModel;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
 
 // @CrossOrigin(origins = "http://localhost:8080")
 @RestController
@@ -64,6 +67,11 @@ public class PersonController implements PersonControllerDocs {
         return service.create(person);
     }
 
+    @PostMapping(value = "/massCreation", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_YAML_VALUE})
+    @Override
+    public ResponseEntity<List<PersonDTO>> massCreation(@RequestParam("file") MultipartFile file) {
+        return ResponseEntity.ok(service.massCreation(file));
+    }
 
     @PutMapping(consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_YAML_VALUE},produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_YAML_VALUE})
     @Override
