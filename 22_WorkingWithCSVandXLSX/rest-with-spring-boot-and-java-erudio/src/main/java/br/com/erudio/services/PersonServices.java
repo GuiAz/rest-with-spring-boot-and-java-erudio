@@ -6,6 +6,8 @@ import br.com.erudio.exception.BadRequestException;
 import br.com.erudio.exception.FileStorageException;
 import br.com.erudio.exception.RequiredObjectIsNullException;
 import br.com.erudio.exception.ResourceNotFoundException;
+import br.com.erudio.file.exporter.contract.FileExporter;
+import br.com.erudio.file.exporter.factory.FileExporterFactory;
 import br.com.erudio.file.importer.contract.FileImporter;
 import br.com.erudio.file.importer.factory.FileImporterFactory;
 import br.com.erudio.model.Person;
@@ -14,13 +16,13 @@ import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PagedResourcesAssembler;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.PagedModel;
-import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -47,6 +49,9 @@ public class PersonServices {
     @Autowired
     PagedResourcesAssembler<PersonDTO> assembler;
 
+    @Autowired
+    FileExporterFactory exporter;
+
     public PagedModel<EntityModel<PersonDTO>> findAll(Pageable pageable) {
         logger.info("Finding all Person!");
 
@@ -71,6 +76,20 @@ public class PersonServices {
         addHateoasLinks(dto);
 
         return dto;
+    }
+
+    public Resource exportPage(Pageable pageable, String acceptHeader) {
+        logger.info("Exporting a People page!");
+
+        var people = repository.findAll(pageable)
+                .map(person -> parseObjects(person, PersonDTO.class)).getContent();
+
+        try {
+            FileExporter exporter = this.exporter.getExpoter(acceptHeader);
+            return exporter.exportFile(people);
+        } catch (Exception e) {
+            throw new RuntimeException("Error during file export!", e);
+        }
     }
 
     public PersonDTO create(PersonDTO person) {
@@ -107,10 +126,10 @@ public class PersonServices {
                     })
                     .toList();
 
-        }  catch (Exception e) {
-        logger.error("Error processing the file: {}", e.getMessage(), e);
-        throw new FileStorageException("Error processing the file!");
-    }
+        } catch (Exception e) {
+            logger.error("Error processing the file: {}", e.getMessage(), e);
+            throw new FileStorageException("Error processing the file!");
+        }
     }
 
     public PersonDTO update(PersonDTO person) {
@@ -165,11 +184,11 @@ public class PersonServices {
         });
 
         Link findAllLink = linkTo(
-                        methodOn(PersonController.class)
-                                .findAll(
-                                        pageable.getPageNumber(),
-                                        pageable.getPageSize(),
-                                        String.valueOf(pageable.getSort())))
+                methodOn(PersonController.class)
+                        .findAll(
+                                pageable.getPageNumber(),
+                                pageable.getPageSize(),
+                                String.valueOf(pageable.getSort())))
                 .withSelfRel();
 
         return assembler.toModel(peopleWithLinks, findAllLink);
@@ -184,6 +203,7 @@ public class PersonServices {
         dto.add(linkTo(methodOn(PersonController.class).update(dto)).withRel("update").withType("PUT"));
         dto.add(linkTo(methodOn(PersonController.class).disablePerson(dto.getId())).withRel("disabled").withType("PATCH"));
         dto.add(linkTo(methodOn(PersonController.class).delete(dto.getId())).withRel("delete").withType("DELETE"));
+        dto.add(linkTo(methodOn(PersonController.class).exportPage(1, 12, "asc", null)).withRel("exportPage").withType("GET").withTitle("Export People"));
     }
 }
 
