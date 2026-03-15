@@ -1,7 +1,9 @@
 package br.com.erudio.integrationtests.controllers.withjson;
 
 import br.com.erudio.config.TestConfigs;
+import br.com.erudio.integrationtests.dto.AccountCredentialsDTO;
 import br.com.erudio.integrationtests.dto.PersonDTO;
+import br.com.erudio.integrationtests.dto.TokenDTO;
 import br.com.erudio.integrationtests.dto.wrappers.json.WrapperPersonDTO;
 import br.com.erudio.integrationtests.testcontainers.AbstractIntegrationTest;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -29,6 +31,7 @@ class PersonControllerJsonTest extends AbstractIntegrationTest {
     private static RequestSpecification specification;
     private static ObjectMapper objectMapper;
 
+    private static TokenDTO tokenDto;
     private static PersonDTO person;
 
     @BeforeAll
@@ -37,20 +40,43 @@ class PersonControllerJsonTest extends AbstractIntegrationTest {
         objectMapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
 
         person = new PersonDTO();
+        tokenDto = new TokenDTO();
+    }
+
+    @Test
+    @Order(0)
+    void signIn() {
+        AccountCredentialsDTO credentials = new AccountCredentialsDTO("leandro", "admin123");
+        tokenDto = given()
+                .basePath("/auth/sign")
+                .port(TestConfigs.SERVER_PORT)
+                .contentType(MediaType.APPLICATION_JSON_VALUE)
+                .body(credentials)
+                .when()
+                .post()
+                .then()
+                .statusCode(200)
+                .extract()
+                .body()
+                .as(TokenDTO.class);
+
+        specification = new RequestSpecBuilder()
+                .addHeader(TestConfigs.HEADER_PARAM_ORIGIN, TestConfigs.ORIGIN_ERUDIO)
+                .addHeader(TestConfigs.HEADER_PARAM_AUTHORIZATION, "Bearer " + tokenDto.getAcessToken())
+                .setBasePath("/api/person/v1")
+                .setPort(TestConfigs.SERVER_PORT)
+                .addFilter(new RequestLoggingFilter(LogDetail.ALL))
+                .addFilter(new ResponseLoggingFilter(LogDetail.ALL))
+                .build();
+
+        Assertions.assertNotNull(tokenDto.getAcessToken());
+        Assertions.assertNotNull(tokenDto.getRefreshToken());
     }
 
     @Test
     @Order(1)
     void createTest() throws JsonProcessingException {
         mockPerson();
-
-        specification = new RequestSpecBuilder()
-            .addHeader(TestConfigs.HEADER_PARAM_ORIGIN, TestConfigs.ORIGIN_ERUDIO)
-            .setBasePath("/api/person/v1")
-            .setPort(TestConfigs.SERVER_PORT)
-                .addFilter(new RequestLoggingFilter(LogDetail.ALL))
-                .addFilter(new ResponseLoggingFilter(LogDetail.ALL))
-            .build();
 
         var content = given(specification)
             .contentType(MediaType.APPLICATION_JSON_VALUE)
@@ -272,5 +298,7 @@ class PersonControllerJsonTest extends AbstractIntegrationTest {
         person.setAddress("Helsinki - Finland");
         person.setGender("Male");
         person.setEnabled(true);
+        person.setProfileUrl("https://pub.com.erudio.com.br/meus-cursos");
+        person.setPhotoUrl("https://pub.com.erudio.com.br/meus-cursos");
     }
 }
