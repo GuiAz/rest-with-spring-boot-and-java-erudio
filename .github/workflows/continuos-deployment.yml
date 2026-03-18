@@ -26,12 +26,12 @@ jobs:
           cache: maven
 
       - name: Build Application JAR
-        working-directory: ./rest-with-spring-boot-and-java-erudio
+        working-directory: ./28_DockerizingOurApp/rest-with-spring-boot-and-java-erudio
         run: mvn clean package -DskipTests
 
       - name: Build and Push Docker Image
         uses: docker/build-push-action@v5
         with:
-          context: ./rest-with-spring-boot-and-java-erudio
+          context: ./28_DockerizingOurApp/rest-with-spring-boot-and-java-erudio
           push: true
           tags: guiaz/rest-with-spring-boot-and-java-erudio:latest
