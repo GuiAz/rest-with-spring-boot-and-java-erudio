@@ -25,13 +25,17 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
-      - name: Build Application JAR
+      - name: Build Application .jar
         working-directory: ./28_DockerizingOurApp/rest-with-spring-boot-and-java-erudio
         run: mvn clean package -DskipTests
 
-      - name: Build and Push Docker Image
-        uses: docker/build-push-action@v5
-        with:
-          context: ./28_DockerizingOurApp/rest-with-spring-boot-and-java-erudio
-          push: true
-          tags: guiaz/rest-with-spring-boot-and-java-erudio:latest
+      - name: Docker Compose Build
+        working-directory: ./28_DockerizingOurApp
+        run: docker-compose build
+
+      - name: Push to Docker Hub Container Registry
+        run: |
+          docker tag ${{ secrets.DOCKER_USERNAME }}/rest-with-spring-boot-and-java-erudio:latest ${{ secrets.DOCKER_USERNAME }}/rest-with-spring-boot-and-java-erudio:${{ github.run_id }}
+          
+          docker push ${{ secrets.DOCKER_USERNAME }}/rest-with-spring-boot-and-java-erudio:latest
+          docker push ${{ secrets.DOCKER_USERNAME }}/rest-with-spring-boot-and-java-erudio:${{ github.run_id }}
